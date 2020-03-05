@@ -76,8 +76,10 @@ public class TimePickerProxy extends BaseDialogProxy
 			if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 				&& (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)) {
 				picker = new TiTimePickerDialog(activity, timeSetListener, hour, minute, is24HourView);
-			} else {
+			} else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
 				picker = new TimePickerDialogFixedNougatSpinner(activity, timeSetListener, hour, minute, is24HourView);
+			} else {
+				picker = new TimePickerDialog(activity, timeSetListener, hour, minute, is24HourView);
 			}
 
 			picker.setCanceledOnTouchOutside(false);
